@@ -1,0 +1,7 @@
+#!/bin/bash
+
+javac -classpath $CLASSPATH -d class org/bh007/kmer/*.java
+
+jar -cvf kmer.jar -C class/ .
+
+hadoop jar kmer.jar org/bh007/kmer/Kmer -D Size.Kmer=10 -D Size.Segment=10000 -D Number.Reducers=15 input output cache
